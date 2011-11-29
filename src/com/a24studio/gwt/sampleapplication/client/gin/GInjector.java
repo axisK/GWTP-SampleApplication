@@ -7,6 +7,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.google.gwt.inject.client.AsyncProvider;
 import com.a24studio.gwt.sampleapplication.client.presenter.ApplicationPresenter;
 import com.a24studio.gwt.sampleapplication.client.presenter.LoginPresenter;
+import com.a24studio.gwt.sampleapplication.client.presenter.SplitPagePresenter;
 
 /**
  * Gin Injector, this is used to build up the dependency graphs and
@@ -46,4 +47,11 @@ public interface GInjector extends Ginjector {
 	 * @return
 	 */
 	AsyncProvider<LoginPresenter> getLoginPresenter();
+
+	/**
+	 * Code splitting version of the split page presenter.
+	 * 
+	 * @return
+	 */
+	AsyncProvider<SplitPagePresenter> getSplitPagePresenter();
 }

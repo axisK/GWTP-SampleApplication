@@ -11,7 +11,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
-import com.a24studio.gwt.sampleapplication.client.presenter.ApplicationPresenter;
 
 /**
  * Presenter for the login view.
@@ -38,7 +37,7 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
 	 */
 	@Override
 	protected void revealInParent( ) {
-		RevealContentEvent.fire( this, ApplicationPresenter.TYPE_CONTENT_SLOT, this );
+		RevealContentEvent.fire( this, SplitPagePresenter.TYPE_CONTENT_SLOT, this );
 	}
 
 	/**

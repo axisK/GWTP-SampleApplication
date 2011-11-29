@@ -1,7 +1,6 @@
 package com.a24studio.gwt.sampleapplication.client.view;
 
 import com.a24studio.gwt.sampleapplication.client.presenter.LoginPresenter;
-import com.a24studio.gwt.sampleapplication.client.presenter.LoginPresenter.MyView;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;

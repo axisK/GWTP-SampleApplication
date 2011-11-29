@@ -8,6 +8,8 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.a24studio.gwt.sampleapplication.client.presenter.ApplicationPresenter;
 import com.a24studio.gwt.sampleapplication.client.view.ApplicationView;
+import com.a24studio.gwt.sampleapplication.client.view.SplitPageView;
+import com.a24studio.gwt.sampleapplication.client.presenter.SplitPagePresenter;
 
 /**
  * Module configuration for the layout section of the application.
@@ -28,5 +30,6 @@ public class LayoutModule extends AbstractPresenterModule {
 		bindConstant( ).annotatedWith( DefaultPlace.class ).to( NameTokens.login );
 		bindConstant( ).annotatedWith( DefaultErrorPlace.class ).to( NameTokens.login );
 		bindPresenter( ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class, ApplicationPresenter.MyProxy.class );
+		bindPresenter( SplitPagePresenter.class, SplitPagePresenter.MyView.class, SplitPageView.class, SplitPagePresenter.MyProxy.class );
 	}
 }
