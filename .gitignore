@@ -4,3 +4,6 @@
 .webservices/
 webservices/
 war/WEB-INF/classes/
+gwt-unitCache/
+war/sampleapplication/
+war/WEB-INF/deploy/

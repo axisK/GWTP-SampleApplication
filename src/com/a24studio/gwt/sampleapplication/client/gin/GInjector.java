@@ -4,6 +4,9 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.google.gwt.inject.client.AsyncProvider;
+import com.a24studio.gwt.sampleapplication.client.presenter.ApplicationPresenter;
+import com.a24studio.gwt.sampleapplication.client.presenter.LoginPresenter;
 
 /**
  * Gin Injector, this is used to build up the dependency graphs and
@@ -13,7 +16,7 @@ import com.gwtplatform.mvp.client.proxy.PlaceManager;
  * @author Petrus Rademeyer
  * @since 29 November 2011
  */
-@GinModules( { LayoutModule.class } )
+@GinModules( { LayoutModule.class, PresentersModule.class } )
 public interface GInjector extends Ginjector {
 
 	/**
@@ -29,4 +32,18 @@ public interface GInjector extends Ginjector {
 	 * @return
 	 */
 	PlaceManager getPlaceManager();
+
+	/**
+	 * Code splitting version of the application presenter.
+	 * 
+	 * @return
+	 */
+	AsyncProvider<ApplicationPresenter> getApplicationPresenter();
+
+	/**
+	 * Code splitting version of the login presenter.
+	 * 
+	 * @return
+	 */
+	AsyncProvider<LoginPresenter> getLoginPresenter();
 }

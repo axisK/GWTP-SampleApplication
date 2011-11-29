@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	ui:generateFormat='com.google.gwt.i18n.rebind.format.PropertiesFormat'
+	ui:generateKeys='com.google.gwt.i18n.rebind.keygen.MD5KeyGenerator'
+	ui:generateLocales='default'>
+
+	<ui:style>
+		.loginPanel {
+			border: 1px solid black;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			padding: 5px 0px 0px 5px;
+			margin: auto;
+		}
+		
+		.pageStyle {
+			padding: 25px;
+		}
+		
+		.button {
+			margin-top:5px;
+			float: right;
+			margin-right: 5px;
+		}
+	</ui:style>
+
+	<g:HTMLPanel styleName="{style.pageStyle}">
+		<g:FlowPanel width="179px" height="139px" styleName="{style.loginPanel}">
+			<g:Label text="Username:" width="86px" height="17px"/>
+			<g:TextBox ui:field="usernameBox" width="164px"/>
+			<g:Label text="Password:" width="86px" height="17px"/>
+			<g:PasswordTextBox ui:field="passwordBox" width="164px" />
+			<g:Button ui:field="loginButton"  styleName="{style.button}">Login</g:Button>
+		</g:FlowPanel>
+	</g:HTMLPanel>
+</ui:UiBinder>
