@@ -17,7 +17,7 @@ import com.a24studio.gwt.sampleapplication.client.presenter.SplitPagePresenter;
  * @author Petrus Rademeyer
  * @since 29 November 2011
  */
-@GinModules( { LayoutModule.class, PresentersModule.class } )
+@GinModules( { ServicesModule.class, LayoutModule.class, PresentersModule.class } )
 public interface GInjector extends Ginjector {
 
 	/**

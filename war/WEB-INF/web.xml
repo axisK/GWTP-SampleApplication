@@ -5,6 +5,22 @@
          version="2.5"
          xmlns="http://java.sun.com/xml/ns/javaee">
 
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>proxyServlet</servlet-name>
+    <servlet-class>com.a24studio.proxyservlet.ProxyServlet</servlet-class>
+    <init-param>
+      <param-name>proxyTarget</param-name>
+      <param-value>http://localhost/</param-value>
+    </init-param>
+  </servlet>
+
+  <!-- Servlet Mappings -->
+  <servlet-mapping>
+    <servlet-name>proxyServlet</servlet-name>
+    <url-pattern>/SampleApplication/*</url-pattern>
+  </servlet-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>SampleApplication.html</welcome-file>

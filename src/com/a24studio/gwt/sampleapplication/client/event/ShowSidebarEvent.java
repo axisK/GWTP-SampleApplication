@@ -3,7 +3,6 @@ package com.a24studio.gwt.sampleapplication.client.event;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.HasHandlers;
-import com.google.gwt.event.shared.HandlerRegistration;
 
 public class ShowSidebarEvent extends GwtEvent<ShowSidebarEvent.ShowSidebarHandler> {
 	public interface ShowSidebarHandler extends EventHandler {
