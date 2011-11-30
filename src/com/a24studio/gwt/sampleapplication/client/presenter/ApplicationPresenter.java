@@ -1,9 +1,14 @@
 package com.a24studio.gwt.sampleapplication.client.presenter;
 
+import com.a24studio.gwt.sampleapplication.client.event.HideTopbarEvent;
+import com.a24studio.gwt.sampleapplication.client.event.HideTopbarHandler;
+import com.a24studio.gwt.sampleapplication.client.event.ShowTopbarEvent;
+import com.a24studio.gwt.sampleapplication.client.event.ShowTopbarHandler;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
+import com.gwtplatform.mvp.client.annotations.ProxyEvent;
 import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.google.inject.Inject;
@@ -17,7 +22,9 @@ import com.gwtplatform.mvp.client.proxy.RevealRootLayoutContentEvent;
  * @author Petrus Rademeyer
  * @since 29 November 2011
  */
-public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> {
+public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView, ApplicationPresenter.MyProxy> implements HideTopbarHandler, ShowTopbarHandler {
+
+	private boolean hideTopbar = false;
 
 	/**
 	 * Event bus used to communicate with other presenters.
@@ -43,12 +50,37 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
 		this.eventBus = eventBus;
 	}
 
+	@Override
+	protected void onReveal() {
+		super.onReveal();
+
+		getView( ).setTopbarVisible( !hideTopbar );
+	}
+
 	/**
 	 * Requests that the presenter reveal itself in its parent presenter.
 	 */
 	@Override
 	protected void revealInParent() {
 		RevealRootLayoutContentEvent.fire( eventBus, this );
+	}
+
+	@ProxyEvent
+	@Override
+	public void onHideTopbar(HideTopbarEvent event) {
+		hideTopbar = true;
+		if ( isVisible( ) ) {
+			getView( ).setTopbarVisible( !hideTopbar );
+		}
+	}
+
+	@ProxyEvent
+	@Override
+	public void onShowTopbar(ShowTopbarEvent event) {
+		hideTopbar = false;
+		if ( isVisible( ) ) {
+			getView( ).setTopbarVisible( !hideTopbar );
+		}
 	}
 
 	/**
@@ -58,6 +90,7 @@ public class ApplicationPresenter extends Presenter<ApplicationPresenter.MyView,
 	 * @since 29 November 2011
 	 */
 	public interface MyView extends View {
+		void setTopbarVisible( boolean visible );
 	}
 
 	/**

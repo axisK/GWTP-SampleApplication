@@ -4,7 +4,12 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.a24studio.gwt.sampleapplication.client.event.HideSidebarEvent;
+import com.a24studio.gwt.sampleapplication.client.event.HideTopbarEvent;
+import com.a24studio.gwt.sampleapplication.client.event.ShowSidebarEvent;
+import com.a24studio.gwt.sampleapplication.client.event.ShowTopbarEvent;
 import com.a24studio.gwt.sampleapplication.client.place.NameTokens;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.google.inject.Inject;
 import com.google.gwt.event.shared.EventBus;
@@ -38,6 +43,25 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
 	@Override
 	protected void revealInParent( ) {
 		RevealContentEvent.fire( this, SplitPagePresenter.TYPE_CONTENT_SLOT, this );
+	}
+
+	@Override
+	public void prepareFromRequest(PlaceRequest request) {
+		super.prepareFromRequest(request);
+		
+		boolean hideSidebar = Boolean.parseBoolean( request.getParameter( "hideSidebar", "false" ) );
+		if ( hideSidebar ) {
+			HideSidebarEvent.fire( this );
+		} else {
+			ShowSidebarEvent.fire( this );
+		}
+
+		boolean hideTopbar = Boolean.parseBoolean( request.getParameter( "hideTopbar", "false" ) );
+		if ( hideTopbar ) {
+			HideTopbarEvent.fire( this );
+		} else {
+			ShowTopbarEvent.fire( this );
+		}
 	}
 
 	/**

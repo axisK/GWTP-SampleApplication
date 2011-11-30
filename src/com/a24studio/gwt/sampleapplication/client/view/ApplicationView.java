@@ -2,6 +2,7 @@ package com.a24studio.gwt.sampleapplication.client.view;
 
 import com.a24studio.gwt.sampleapplication.client.presenter.ApplicationPresenter;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -40,6 +41,17 @@ public class ApplicationView extends ViewImpl implements ApplicationPresenter.My
 			contentSlot.add( content );
 		} else {
 			super.setInSlot( slot, content );
+		}
+	}
+	
+	@Override
+	public void setTopbarVisible(boolean visible) {
+		topSlot.setStyleName( "hiddenItem", !visible );
+		if ( visible ) {
+			layoutPanel.setWidgetTopBottom( contentSlot, 44, Unit.PX, 0, Unit.PX );
+		} else {
+			layoutPanel.setWidgetTopBottom( contentSlot, 0, Unit.PX, 0, Unit.PX );
+			
 		}
 	}
 }
